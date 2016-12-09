@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ProjectSnowflake.Rendering;
+using ProjectSnowflake.World;
 
 namespace ProjectSnowflake
 {
@@ -12,6 +14,8 @@ namespace ProjectSnowflake
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferWidth = 1080;
             Content.RootDirectory = "Content";
         }
 
@@ -23,23 +27,28 @@ namespace ProjectSnowflake
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-        }
-        
-        protected override void UnloadContent()
-        {
+
+            RenderingManager.init(graphics, spriteBatch, Content);
+            WorldManager.init();
         }
         
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            WorldManager.update();
+
             base.Update(gameTime);
         }
         
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            RenderingManager.startDraw();
 
+            WorldManager.draw();
+
+            RenderingManager.endDraw();
             base.Draw(gameTime);
         }
     }
