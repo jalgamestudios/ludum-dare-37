@@ -55,6 +55,8 @@
     <Compile Include="Timing\FpsTracker.cs" />
     <Compile Include="Timing\Time.cs" />
     <Compile Include="Timing\TimeSource.cs" />
+    <Compile Include="UI\BottomBarManager.cs" />
+    <Compile Include="UI\UIManager.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\TileDefinition.cs" />
     <Compile Include="World\TileLayer.cs" />
@@ -87,6 +89,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="content\tiles\spritesheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\ui\bottom-bar-overlay.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\ui\bottom-bar-underlay.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\ui\energy-bar-active.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="OpenTK.dll.config">

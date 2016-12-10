@@ -5,6 +5,7 @@ using ProjectSnowflake.Entities;
 using ProjectSnowflake.Input;
 using ProjectSnowflake.Rendering;
 using ProjectSnowflake.Timing;
+using ProjectSnowflake.UI;
 using ProjectSnowflake.World;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,7 @@ namespace ProjectSnowflake
             InputManager.init((x, y) => { });
             WorldManager.init();
             EntityManager.init();
+            UIManager.init();
         }
         
         protected override void Update(GameTime gameTime)
@@ -60,6 +62,7 @@ namespace ProjectSnowflake
 
             WorldManager.update();
             EntityManager.update();
+            UIManager.update();
 
             base.Update(gameTime);
         }
@@ -83,6 +86,7 @@ namespace ProjectSnowflake
 
             WorldManager.draw();
             EntityManager.draw();
+            UIManager.draw();
 
             RenderingManager.endDraw();
             base.Draw(gameTime);
