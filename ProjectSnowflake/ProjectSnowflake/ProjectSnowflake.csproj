@@ -40,11 +40,14 @@
   <ItemGroup>
     <Compile Include="Camera\CameraManager.cs" />
     <Compile Include="Entities\Components\IComponent.cs" />
+    <Compile Include="Entities\Components\PlayerControlledComponent.cs" />
     <Compile Include="Entities\Components\WalkingTextureComponent.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityManager.cs" />
     <Compile Include="Entities\GameEntityCreator.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Input\InputData.cs" />
+    <Compile Include="Input\InputManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\RenderingManager.cs" />

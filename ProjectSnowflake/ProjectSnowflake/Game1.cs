@@ -2,10 +2,12 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectSnowflake.Entities;
+using ProjectSnowflake.Input;
 using ProjectSnowflake.Rendering;
 using ProjectSnowflake.Timing;
 using ProjectSnowflake.World;
 using System;
+using System.Collections.Generic;
 
 namespace ProjectSnowflake
 {
@@ -44,6 +46,7 @@ namespace ProjectSnowflake
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             RenderingManager.init(graphics, spriteBatch, Content);
+            InputManager.init((x, y) => { });
             WorldManager.init();
             EntityManager.init();
         }
@@ -53,12 +56,25 @@ namespace ProjectSnowflake
             Time.update((float)gameTime.ElapsedGameTime.TotalSeconds);
             Time.updateFps.frame((float)gameTime.ElapsedGameTime.TotalSeconds);
 
+            updateInput();
+
             WorldManager.update();
             EntityManager.update();
 
             base.Update(gameTime);
         }
-        
+
+        private void updateInput()
+        {
+            List<GamePadState> gamepads = new List<GamePadState>();
+            gamepads.Add(GamePad.GetState(PlayerIndex.One));
+            gamepads.Add(GamePad.GetState(PlayerIndex.Two));
+            gamepads.Add(GamePad.GetState(PlayerIndex.Three));
+            gamepads.Add(GamePad.GetState(PlayerIndex.Four));
+
+            InputManager.update(Keyboard.GetState(), Mouse.GetState(), gamepads, IsActive);
+        }
+
         protected override void Draw(GameTime gameTime)
         {
             RenderingManager.startDraw();

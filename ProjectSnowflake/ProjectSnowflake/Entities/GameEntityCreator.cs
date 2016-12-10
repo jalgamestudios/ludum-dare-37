@@ -17,6 +17,7 @@ namespace ProjectSnowflake.Entities
         {
             Entity playerEntity = new Entity();
             playerEntity.components.Add(new WalkingTextureComponent(RenderingManager.contentManager.Load<Texture2D>("characters/jimmy")));
+            playerEntity.components.Add(new PlayerControlledComponent(3));
             EntityManager.entities.Add(playerEntity);
         }
 
