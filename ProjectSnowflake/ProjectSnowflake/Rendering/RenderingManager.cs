@@ -41,7 +41,7 @@ namespace ProjectSnowflake.Rendering
         {
             graphicsDevice.SetRenderTarget(mainRenderTarget);
             graphicsDevice.Clear(Color.White);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, null);
 
         }
 
