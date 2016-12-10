@@ -40,6 +40,8 @@ namespace ProjectSnowflake.Timing
         /// </summary>
         public static float totalGameSeconds;
 
+        public static int frameCount { get; set; }
+
         public static FpsTracker updateFps;
         public static FpsTracker drawFps;
 
@@ -64,6 +66,7 @@ namespace ProjectSnowflake.Timing
             Time.actualElapsedSeconds = elapsedSeconds;
             Time.totalSeconds += elapsedSeconds;
             Time.totalGameSeconds += gameElapsedSeconds;
+            frameCount++;
         }
 
         public static float elapsedSeconds(TimeSource time)

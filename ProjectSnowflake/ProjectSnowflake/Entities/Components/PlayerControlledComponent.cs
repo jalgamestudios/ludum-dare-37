@@ -31,8 +31,8 @@ namespace ProjectSnowflake.Entities.Components
 
 
         #region Functions
-
-        public void draw(Entity entity)
+        
+        public void update(Entity entity)
         {
             Vector2 direction = new Vector2();
             if (InputManager.thisFrame.keyboardState.IsKeyDown(Keys.A))
@@ -56,7 +56,7 @@ namespace ProjectSnowflake.Entities.Components
             directionLastFrame = direction;
         }
 
-        public void update(Entity entity)
+        public void draw(Entity entity)
         {
         }
 

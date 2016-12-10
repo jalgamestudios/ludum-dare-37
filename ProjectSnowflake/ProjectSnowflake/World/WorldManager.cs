@@ -52,6 +52,16 @@ namespace ProjectSnowflake.World
                 definition.sourceRectangle = tileDefinitions[x + y * 32 + 1].sourceRectangle;
                 if (tileElement.Attribute("Walkable") != null)
                     definition.walkable = tileElement.Attribute("Walkable").Value == "True";
+                if (tileElement.Element("Events") != null)
+                {
+                    foreach (var eventElement in tileElement.Element("Events").Elements("TileEvent"))
+                    {
+                        TileEvent tileEvent = new TileEvent(0, "");
+                        tileEvent.triggerDistance = float.Parse(eventElement.Attribute("TriggerDistance").Value, CultureInfo.InvariantCulture);
+                        tileEvent.code = eventElement.Attribute("Code").Value;
+                        definition.events.Add(tileEvent);
+                    }
+                }
                 tileDefinitions[x + y * 32 + 1] = definition;
             }
         }
@@ -71,8 +81,8 @@ namespace ProjectSnowflake.World
         {
             layers.Clear();
             XElement fileElement = XDocument.Load(levelFile).Root;
-            int width = (int)float.Parse(fileElement.Attribute("width").Value);
-            int height = (int)float.Parse(fileElement.Attribute("height").Value);
+            int width = (int)float.Parse(fileElement.Attribute("width").Value, CultureInfo.InvariantCulture);
+            int height = (int)float.Parse(fileElement.Attribute("height").Value, CultureInfo.InvariantCulture);
             List<XElement> layerElements = fileElement.Elements("layer").ToList();
             for (int layerIndex = 0; layerIndex < layerElements.Count; layerIndex++)
             {

@@ -25,6 +25,12 @@ namespace ProjectSnowflake
             Content.RootDirectory = "Content";
             this.Window.AllowUserResizing = true;
             this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+
+            if (true)
+            {
+                IsFixedTimeStep = false;
+                graphics.SynchronizeWithVerticalRetrace = false;
+            }
         }
         void Window_ClientSizeChanged(object sender, EventArgs e)
         {

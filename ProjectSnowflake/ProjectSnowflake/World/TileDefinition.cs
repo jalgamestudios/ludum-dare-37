@@ -17,6 +17,8 @@ namespace ProjectSnowflake.World
         public bool walkable { get; set; }
         public bool draw { get; set; }
 
+        public List<TileEvent> events { get; set; }
+
         #endregion
 
 
@@ -26,12 +28,14 @@ namespace ProjectSnowflake.World
         {
             this.draw = draw;
             this.walkable = true;
+            this.events = new List<TileEvent>();
         }
         public TileDefinition(Texture2D texture, bool walkable)
         {
             this.texture = texture;
             this.walkable = walkable;
             this.draw = true;
+            this.events = new List<TileEvent>();
         }
 
         #endregion

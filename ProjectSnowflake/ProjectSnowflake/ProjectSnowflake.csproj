@@ -42,6 +42,7 @@
     <Compile Include="Entities\Components\CameraTrackingComponent.cs" />
     <Compile Include="Entities\Components\IComponent.cs" />
     <Compile Include="Entities\Components\PlayerControlledComponent.cs" />
+    <Compile Include="Entities\Components\TriggersEventsComponent.cs" />
     <Compile Include="Entities\Components\WalkingTextureComponent.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityManager.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="UI\UIManager.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\TileDefinition.cs" />
+    <Compile Include="World\TileEvent.cs" />
     <Compile Include="World\TileLayer.cs" />
     <Compile Include="World\TileRotation.cs" />
     <Compile Include="World\WorldManager.cs" />
