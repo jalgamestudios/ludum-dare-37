@@ -41,11 +41,22 @@ namespace ProjectSnowflake.World
                 for (int y = 0; y < width; y++)
                     if (tiles[x,y].definition.draw)
                     {
+                        float rotation = 0;
+                        switch (tiles[x,y].rotation)
+                        {
+                            case TileRotation.QuarterRotation: rotation = MathHelper.PiOver2; break;
+                            case TileRotation.HalfRotation: rotation = MathHelper.Pi; break;
+                            case TileRotation.ThreeQuarterRotation: rotation = MathHelper.PiOver2 * 3; break;
+                        }
                         RenderingManager.spriteBatch.Draw(
                             tiles[x, y].definition.texture,
-                            CameraManager.getScreenPosition(new Vector2(x, y), new Vector2(1, 1)),
+                            CameraManager.getScreenPosition(new Vector2(x +  0.5f, y + 0.5f), new Vector2(1, 1)),
                             tiles[x,y].definition.sourceRectangle,
-                            Color.White);
+                            Color.White,
+                            rotation,
+                            new Vector2(8,8),
+                            tiles[x,y].flipMode,
+                            0);
                     }
         }
 

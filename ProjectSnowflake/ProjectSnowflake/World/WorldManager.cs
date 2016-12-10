@@ -95,7 +95,7 @@ namespace ProjectSnowflake.World
                                 gid += (int)Math.Pow(2, powerOfTwo);
                         }
                         #endregion
-                        layer.tiles[x, y] = new Tile(gid); // = tileDefinitions[gid].getTileAt(gid, new Coordinate(x, y, layerIndex), rotation, flipping);
+                        layer.tiles[x, y] = new Tile(gid) { rotation = rotation, flipMode = flipping }; // = tileDefinitions[gid].getTileAt(gid, new Coordinate(x, y, layerIndex), rotation, flipping);
                     }
                 }
                 //if (layerElement.Element("properties") != null)
