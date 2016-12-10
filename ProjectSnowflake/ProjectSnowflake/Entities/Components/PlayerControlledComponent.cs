@@ -15,6 +15,8 @@ namespace ProjectSnowflake.Entities.Components
 
         public float speed { get; set; }
 
+        private Vector2 directionLastFrame { get; set; }
+
         #endregion
 
 
@@ -42,7 +44,16 @@ namespace ProjectSnowflake.Entities.Components
             if (InputManager.thisFrame.keyboardState.IsKeyDown(Keys.S))
                 direction.Y = 1;
 
+            if (direction != directionLastFrame)
+            {
+                Vector2 roundedPosition = new Vector2((float)Math.Round(entity.position.X * 16), (float)Math.Round(entity.position.Y * 16)) / 16;
+                Vector2 offset = roundedPosition - entity.position;
+                entity.tryMove(offset);
+            }
+
             entity.direction = direction * speed;
+
+            directionLastFrame = direction;
         }
 
         public void update(Entity entity)

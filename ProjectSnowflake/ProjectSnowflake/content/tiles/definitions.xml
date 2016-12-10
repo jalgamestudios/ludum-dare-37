@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TileDefinitions>
+  <!-- Walls: -->
   <Defintion X="0" Y="1" Walkable="False" />
   <Defintion X="1" Y="1" Walkable="False" />
   <Defintion X="2" Y="1" Walkable="False" />
   <Defintion X="3" Y="1" Walkable="False" />
+  
+  <!-- Closed door: -->
   <Defintion X="0" Y="2" Walkable="False" />
+  
+  <!-- Candy tables: -->
+  <Defintion X="0" Y="4" Walkable="False" />
+  <Defintion X="0" Y="5" Walkable="False" />
+  <Defintion X="0" Y="6" Walkable="False" />
 </TileDefinitions>

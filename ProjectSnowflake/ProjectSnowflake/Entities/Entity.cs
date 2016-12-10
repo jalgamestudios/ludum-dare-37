@@ -57,7 +57,7 @@ namespace ProjectSnowflake.Entities
                 component.draw(this);
         }
 
-        private void tryMove(Vector2 offset)
+        public void tryMove(Vector2 offset)
         {
             position += offset;
             if (WorldManager.collides(position, colliderSize))
