@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ProjectSnowflake.Entities;
 using ProjectSnowflake.Rendering;
+using ProjectSnowflake.Timing;
 using ProjectSnowflake.World;
 using System;
 
@@ -43,14 +45,16 @@ namespace ProjectSnowflake
 
             RenderingManager.init(graphics, spriteBatch, Content);
             WorldManager.init();
+            EntityManager.init();
         }
         
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            Time.update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            Time.updateFps.frame((float)gameTime.ElapsedGameTime.TotalSeconds);
 
             WorldManager.update();
+            EntityManager.update();
 
             base.Update(gameTime);
         }
@@ -59,7 +63,10 @@ namespace ProjectSnowflake
         {
             RenderingManager.startDraw();
 
+            Time.drawFps.frame((float)gameTime.ElapsedGameTime.TotalSeconds);
+
             WorldManager.draw();
+            EntityManager.draw();
 
             RenderingManager.endDraw();
             base.Draw(gameTime);
