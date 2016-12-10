@@ -16,6 +16,7 @@ namespace ProjectSnowflake.Entities
 
         public Vector2 position { get; set; }
         public Vector2 direction { get; set; }
+        public Vector2 actualDirection { get; set; }
         public Vector2 colliderSize { get; set; }
 
         public List<IComponent> components { get; set; }
@@ -43,9 +44,11 @@ namespace ProjectSnowflake.Entities
             foreach (var component in components)
                 component.update(this);
 
-
+            Vector2 positionBefore = position;
             tryMove(direction * Time.gameElapsedSeconds * new Vector2(1, 0));
             tryMove(direction * Time.gameElapsedSeconds * new Vector2(0, 1));
+            if (positionBefore != position)
+                actualDirection = position - positionBefore;
         }
 
         public void draw()
