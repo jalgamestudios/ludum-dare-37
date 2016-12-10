@@ -43,15 +43,22 @@ namespace ProjectSnowflake.Entities
             foreach (var component in components)
                 component.update(this);
 
-            position += direction * Time.gameElapsedSeconds;
-            if (WorldManager.collides(position, colliderSize))
-                position -= direction * Time.gameElapsedSeconds;
+
+            tryMove(direction * Time.gameElapsedSeconds * new Vector2(1, 0));
+            tryMove(direction * Time.gameElapsedSeconds * new Vector2(0, 1));
         }
 
         public void draw()
         {
             foreach (var component in components)
                 component.draw(this);
+        }
+
+        private void tryMove(Vector2 offset)
+        {
+            position += offset;
+            if (WorldManager.collides(position, colliderSize))
+                position -= offset;
         }
 
         #endregion

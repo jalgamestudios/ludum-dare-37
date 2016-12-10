@@ -136,9 +136,9 @@ namespace ProjectSnowflake.World
                 (int)(size.X * factor), (int)(size.Y * factor));
             foreach (var layer in layers)
             {
-                for (int x = 0; x < layer.width; x++)
+                for (int x = Math.Max(0, (int)position.X - 2); x < Math.Min(layer.width, (int)(position.X + size.X + 2)); x++)
                 {
-                    for (int y = 0; y < layer.width; y++)
+                    for (int y = Math.Max(0, (int)position.Y - 2); y < Math.Min(layer.height, (int)(position.Y + size.Y + 2)); y++)
                     {
                         if (!layer.tiles[x, y].definition.walkable)
                         {
