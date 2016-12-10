@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ProjectSnowflake.Entities.Components;
 using ProjectSnowflake.Rendering;
 using System;
@@ -16,8 +17,10 @@ namespace ProjectSnowflake.Entities
         public static void init()
         {
             Entity playerEntity = new Entity();
+            playerEntity.position = new Vector2(128, 111);
             playerEntity.components.Add(new WalkingTextureComponent(RenderingManager.contentManager.Load<Texture2D>("characters/jimmy")));
             playerEntity.components.Add(new PlayerControlledComponent(3));
+            playerEntity.components.Add(new CameraTrackingComponent());
             EntityManager.entities.Add(playerEntity);
         }
 

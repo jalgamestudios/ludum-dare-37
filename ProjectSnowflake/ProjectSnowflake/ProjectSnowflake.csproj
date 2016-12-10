@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Camera\CameraManager.cs" />
+    <Compile Include="Entities\Components\CameraTrackingComponent.cs" />
     <Compile Include="Entities\Components\IComponent.cs" />
     <Compile Include="Entities\Components\PlayerControlledComponent.cs" />
     <Compile Include="Entities\Components\WalkingTextureComponent.cs" />
