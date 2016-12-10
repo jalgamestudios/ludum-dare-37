@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using ProjectSnowflake.Entities.Components;
 using ProjectSnowflake.Timing;
+using ProjectSnowflake.World;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ProjectSnowflake.Entities
 
         public Vector2 position { get; set; }
         public Vector2 direction { get; set; }
+        public Vector2 colliderSize { get; set; }
 
         public List<IComponent> components { get; set; }
 
@@ -28,6 +30,7 @@ namespace ProjectSnowflake.Entities
             this.position = new Vector2();
             this.direction = new Vector2();
             this.components = new List<IComponent>();
+            this.colliderSize = new Vector2(0.6f, 0.6f);
         }
 
         #endregion
@@ -40,7 +43,9 @@ namespace ProjectSnowflake.Entities
             foreach (var component in components)
                 component.update(this);
 
-            position += direction * Time.gameElapsedSeconds; 
+            position += direction * Time.gameElapsedSeconds;
+            if (WorldManager.collides(position, colliderSize))
+                position -= direction * Time.gameElapsedSeconds;
         }
 
         public void draw()

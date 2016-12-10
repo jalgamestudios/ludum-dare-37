@@ -13,7 +13,7 @@ namespace ProjectSnowflake.Rendering
     {
         #region Variables
 
-        static float resultion = 1f;
+        static float resultion = 1.5f;
         public static Point screenDimensions { get { return new Point((int)(160 * resultion), (int)(90 * resultion)); } }
 
         private static RenderTarget2D mainRenderTarget { get; set; }

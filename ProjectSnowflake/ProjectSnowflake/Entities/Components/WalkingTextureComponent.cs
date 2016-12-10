@@ -40,7 +40,8 @@ namespace ProjectSnowflake.Entities.Components
 
         public void draw(Entity entity)
         {
-            Rectangle position = CameraManager.getScreenPosition(entity.position + new Vector2(0.5f, 0.5f), new Vector2(1, 1));
+            Vector2 center = entity.position + entity.colliderSize / 2;
+            Rectangle position = CameraManager.getScreenPosition(center, new Vector2(1, 1));
             if (entity.direction.Length() > 0)
                 rotation = (float)Math.Atan2(entity.direction.Y, entity.direction.X) + MathHelper.PiOver2;
             RenderingManager.spriteBatch.Draw(texture, position, null, Color.White, rotation, new Vector2(8,8), SpriteEffects.None, 0);

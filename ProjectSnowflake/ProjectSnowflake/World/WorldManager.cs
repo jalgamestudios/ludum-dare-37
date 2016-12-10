@@ -27,17 +27,33 @@ namespace ProjectSnowflake.World
 
         public static void init()
         {
+            loadTileDefinitions(); tileDefinitions.Add(new TileDefinition(RenderingManager.contentManager.Load<Texture2D>("tiles/floor/wooden-boards"), true));
+
+            layers = new List<TileLayer>();
+
+            loadLevel("content/maps/room-1.tmx");
+        }
+
+        private static void loadTileDefinitions()
+        {
             Texture2D tiles = RenderingManager.contentManager.Load<Texture2D>("tiles/spritesheet");
             tileDefinitions = new List<TileDefinition>();
             tileDefinitions.Add(new TileDefinition(false));
             for (int j = 0; j < 32; j++)
                 for (int i = 0; i < 32; i++)
                     tileDefinitions.Add(new TileDefinition(tiles, true) { sourceRectangle = new Rectangle(i * 16, j * 16, 16, 16) });
-            tileDefinitions.Add(new TileDefinition(RenderingManager.contentManager.Load<Texture2D>("tiles/floor/wooden-boards"), true));
-
-            layers = new List<TileLayer>();
-
-            loadLevel("content/maps/room-1.tmx");
+            XElement tileDefinitionsRoot = XDocument.Load("content/tiles/definitions.xml").Root;
+            foreach (var tileElement in tileDefinitionsRoot.Elements("Defintion"))
+            {
+                int x = int.Parse(tileElement.Attribute("X").Value);
+                int y = int.Parse(tileElement.Attribute("Y").Value);
+                TileDefinition definition = new TileDefinition(true);
+                definition.texture = tileDefinitions[x + y * 32 + 1].texture;
+                definition.sourceRectangle = tileDefinitions[x + y * 32 + 1].sourceRectangle;
+                if (tileElement.Attribute("Walkable") != null)
+                    definition.walkable = tileElement.Attribute("Walkable").Value == "True";
+                tileDefinitions[x + y * 32 + 1] = definition;
+            }
         }
 
         public static void update()
@@ -110,6 +126,33 @@ namespace ProjectSnowflake.World
                 //}
                 layers.Add(layer);
             }
+        }
+
+        public static bool collides(Vector2 position, Vector2 size)
+        {
+            int factor = 16;
+            Rectangle colliderRectangle = new Rectangle(
+                (int)(position.X * factor), (int)(position.Y * factor),
+                (int)(size.X * factor), (int)(size.Y * factor));
+            foreach (var layer in layers)
+            {
+                for (int x = 0; x < layer.width; x++)
+                {
+                    for (int y = 0; y < layer.width; y++)
+                    {
+                        if (!layer.tiles[x, y].definition.walkable)
+                        {
+                            float colliderSize = 0.6f;
+                            Rectangle tileRectangle = new Rectangle(
+                                (int)((x + (0.5f - colliderSize / 2)) * factor), (int)((y + (0.5f - colliderSize / 2)) * factor),
+                                (int)(factor * colliderSize), (int)(factor * colliderSize));
+                            if (tileRectangle.Intersects(colliderRectangle))
+                                return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         #endregion
