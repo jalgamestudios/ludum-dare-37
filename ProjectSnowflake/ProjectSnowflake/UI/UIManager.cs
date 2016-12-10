@@ -17,16 +17,19 @@ namespace ProjectSnowflake.UI
 
         public static void init()
         {
+            HUDWorldManager.init();
             BottomBarManager.init();
         }
 
         public static void update()
         {
+            HUDWorldManager.update();
             BottomBarManager.update();
         }
 
         public static void draw()
         {
+            HUDWorldManager.draw();
             BottomBarManager.draw();
         }
 

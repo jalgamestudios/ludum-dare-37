@@ -57,6 +57,7 @@
     <Compile Include="Timing\Time.cs" />
     <Compile Include="Timing\TimeSource.cs" />
     <Compile Include="UI\BottomBarManager.cs" />
+    <Compile Include="UI\HUDWorldManager.cs" />
     <Compile Include="UI\UIManager.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\TileDefinition.cs" />

@@ -18,6 +18,7 @@ namespace ProjectSnowflake.Entities
         public Vector2 direction { get; set; }
         public Vector2 actualDirection { get; set; }
         public Vector2 colliderSize { get; set; }
+        public Vector2 center { get { return position + colliderSize / 2; } }
 
         public List<IComponent> components { get; set; }
 

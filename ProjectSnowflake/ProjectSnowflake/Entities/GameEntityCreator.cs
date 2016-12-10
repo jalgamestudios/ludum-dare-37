@@ -12,11 +12,18 @@ namespace ProjectSnowflake.Entities
 {
     class GameEntityCreator
     {
+        #region Variables
+
+        public static Entity playerEntity { get; set; }
+
+        #endregion
+
+
         #region Functions
 
         public static void init()
         {
-            Entity playerEntity = new Entity();
+            playerEntity = new Entity();
             playerEntity.position = new Vector2(128, 111);
             playerEntity.components.Add(new WalkingTextureComponent(RenderingManager.contentManager.Load<Texture2D>("characters/jimmy")));
             playerEntity.components.Add(new PlayerControlledComponent(3));
