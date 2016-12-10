@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectSnowflake.Rendering;
 using ProjectSnowflake.World;
+using System;
 
 namespace ProjectSnowflake
 {
@@ -14,9 +15,17 @@ namespace ProjectSnowflake
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferWidth = 1080;
+            graphics.PreferredBackBufferWidth = 1366;
+            graphics.PreferredBackBufferWidth = 768;
             Content.RootDirectory = "Content";
+            this.Window.AllowUserResizing = true;
+            this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+        }
+        void Window_ClientSizeChanged(object sender, EventArgs e)
+        {
+            graphics.PreferredBackBufferWidth = Window.ClientBounds.Width;
+            graphics.PreferredBackBufferHeight = Window.ClientBounds.Height;
+            graphics.ApplyChanges();
         }
 
         protected override void Initialize()
