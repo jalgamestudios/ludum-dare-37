@@ -39,10 +39,14 @@ namespace ProjectSnowflake.World
         {
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < width; y++)
-                    RenderingManager.spriteBatch.Draw(
-                        tiles[x, y].definition.texture,
-                        CameraManager.getScreenPosition(new Vector2(x, y), new Vector2(1, 1)),
-                        Color.White);
+                    if (tiles[x,y].definition.draw)
+                    {
+                        RenderingManager.spriteBatch.Draw(
+                            tiles[x, y].definition.texture,
+                            CameraManager.getScreenPosition(new Vector2(x, y), new Vector2(1, 1)),
+                            tiles[x,y].definition.sourceRectangle,
+                            Color.White);
+                    }
         }
 
         #endregion

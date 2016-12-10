@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace ProjectSnowflake.World
 
         public int type { get; }
         public TileDefinition definition { get { return WorldManager.tileDefinitions[type]; } }
+
+        public TileRotation rotation { get; set; }
+        public SpriteEffects flipMode { get; set; }
 
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,25 @@ namespace ProjectSnowflake.World
         #region Variables
 
         public Texture2D texture { get; set; }
+        public Rectangle? sourceRectangle { get; set; }
         public bool walkable { get; set; }
+        public bool draw { get; set; }
 
         #endregion
 
 
         #region Constructors
 
+        public TileDefinition(bool draw)
+        {
+            this.draw = draw;
+            this.walkable = true;
+        }
         public TileDefinition(Texture2D texture, bool walkable)
         {
             this.texture = texture;
             this.walkable = walkable;
+            this.draw = true;
         }
 
         #endregion
