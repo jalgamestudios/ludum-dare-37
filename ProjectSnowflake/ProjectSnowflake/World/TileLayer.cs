@@ -37,8 +37,10 @@ namespace ProjectSnowflake.World
 
         public void draw()
         {
-            for (int x = 0; x < width; x++)
-                for (int y = 0; y < width; y++)
+            Vector2 worldMinimum = CameraManager.getWorldPosition(0, 0);
+            Vector2 worldMaximum = CameraManager.getWorldPosition(RenderingManager.screenDimensions.X, RenderingManager.screenDimensions.Y);
+            for (int x = Math.Max(0, (int)worldMinimum.X - 1); x < Math.Min(width, (int)worldMaximum.X + 1); x++)
+                for (int y = Math.Max(0, (int)worldMinimum.Y - 1); y < Math.Min(height, (int)worldMaximum.Y + 1); y++)
                     if (tiles[x,y].definition.draw)
                     {
                         float rotation = 0;
