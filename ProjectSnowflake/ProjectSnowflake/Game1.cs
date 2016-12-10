@@ -23,9 +23,13 @@ namespace ProjectSnowflake
         }
         void Window_ClientSizeChanged(object sender, EventArgs e)
         {
-            graphics.PreferredBackBufferWidth = Window.ClientBounds.Width;
-            graphics.PreferredBackBufferHeight = Window.ClientBounds.Height;
-            graphics.ApplyChanges();
+            if (graphics.PreferredBackBufferWidth != Window.ClientBounds.Width
+                || graphics.PreferredBackBufferHeight != Window.ClientBounds.Height)
+            {
+                graphics.PreferredBackBufferWidth = Window.ClientBounds.Width;
+                graphics.PreferredBackBufferHeight = Window.ClientBounds.Height;
+                graphics.ApplyChanges();
+            }
         }
 
         protected override void Initialize()
