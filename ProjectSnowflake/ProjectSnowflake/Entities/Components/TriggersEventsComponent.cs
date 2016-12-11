@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using ProjectSnowflake.Timing;
+using ProjectSnowflake.UI;
 using ProjectSnowflake.World;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace ProjectSnowflake.Entities.Components
         {
             switch (code)
             {
-                case "CandyHint":  int asdf = 0; break;
+                case "CandyHint":  HUDWorldManager.takeSweetsEnabled = true; break;
             }
         }
 

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ProjectSnowflake.Camera;
 using ProjectSnowflake.Entities;
 using ProjectSnowflake.Rendering;
+using ProjectSnowflake.Timing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace ProjectSnowflake.UI
     {
         #region Variables
 
-        public static bool takeSweetsEnabled { get; set; }
+        public static bool takeSweetsEnabled {
+            get { return takeSweetsEnabledTimed > Time.totalSeconds - 0.25f; }
+            set { if (value) takeSweetsEnabledTimed = Time.totalSeconds; } }
+        private static float takeSweetsEnabledTimed { get; set; }
         static Texture2D takeSweetsFloater { get; set; }
 
         #endregion
