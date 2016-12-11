@@ -43,7 +43,7 @@ namespace ProjectSnowflake.Entities
             mommyEntity = new Entity();
             mommyEntity.position = new Vector2(130, 111);
             mommyEntity.components.Add(new WalkingTextureComponent(RenderingManager.contentManager.Load<Texture2D>("characters/mommy")));
-            mommyEntity.components.Add(new PlayerControlledComponent(3));
+            mommyEntity.components.Add(new MomAIComponent());
             EntityManager.entities.Add(mommyEntity);
         }
 

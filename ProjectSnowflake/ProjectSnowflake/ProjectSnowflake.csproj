@@ -41,6 +41,7 @@
     <Compile Include="Camera\CameraManager.cs" />
     <Compile Include="Entities\Components\CameraTrackingComponent.cs" />
     <Compile Include="Entities\Components\IComponent.cs" />
+    <Compile Include="Entities\Components\MomAIComponent.cs" />
     <Compile Include="Entities\Components\PlayerControlledComponent.cs" />
     <Compile Include="Entities\Components\TriggersEventsComponent.cs" />
     <Compile Include="Entities\Components\WalkingTextureComponent.cs" />
@@ -68,6 +69,9 @@
     <Compile Include="UI\ProgressIndicator.cs" />
     <Compile Include="UI\SweetShelfManager.cs" />
     <Compile Include="UI\UIManager.cs" />
+    <Compile Include="World\Pathfinding\Pathfinder.cs" />
+    <Compile Include="World\Pathfinding\PathfindingCell.cs" />
+    <Compile Include="World\Pathfinding\PathfindingGrid.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\TileDefinition.cs" />
     <Compile Include="World\TileEvent.cs" />
