@@ -53,6 +53,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\RenderingManager.cs" />
+    <Compile Include="Sweets\PlayerInventory.cs" />
     <Compile Include="Sweets\Sweet.cs" />
     <Compile Include="Sweets\SweetGrid.cs" />
     <Compile Include="Sweets\SweetsShelf.cs" />

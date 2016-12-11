@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProjectSnowflake.Rendering;
+using ProjectSnowflake.Sweets;
 using ProjectSnowflake.Timing;
 using System;
 using System.Collections.Generic;
@@ -31,10 +32,13 @@ namespace ProjectSnowflake.UI
             underlay = RenderingManager.contentManager.Load<Texture2D>("ui/bottom-bar-underlay");
             overlay = RenderingManager.contentManager.Load<Texture2D>("ui/bottom-bar-overlay");
             energyActive = RenderingManager.contentManager.Load<Texture2D>("ui/energy-bar-active");
+
+            PlayerInventory.init();
         }
 
         public static void update()
         {
+            PlayerInventory.update();
         }
 
         public static void draw()
@@ -54,6 +58,8 @@ namespace ProjectSnowflake.UI
             RenderingManager.spriteBatch.Draw(overlay, 
                 new Rectangle(minXValue, RenderingManager.screenDimensions.Y - 32, 240, 32),
                 Color.White);
+
+            PlayerInventory.inventory.draw(new Point(minXValue + 88, RenderingManager.screenDimensions.Y - 28));
         }
 
         #endregion

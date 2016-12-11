@@ -36,14 +36,52 @@ namespace ProjectSnowflake.Sweets
 
         #region Functions
 
-        public void addSweet(SweetType sweet)
+        public bool addSweet(SweetType sweet)
         {
-            if (sweets.Count == 0)
-                sweets.Add(new Sweet(sweet, new Point(0, 0)));
-            //else
-            //{
+            if (sweet.getDimensions().Y == 1)
+            {
+                int x = dimensions.X - 1;
+                while (x >= 0)
+                {
+                    int y = 0;
+                    while (y < dimensions.Y)
+                    {
+                        Rectangle sweetRect = new Rectangle(x, y, sweet.getDimensions().X, sweet.getDimensions().Y);
+                        bool intersects = false;
+                        foreach (var otherSweet in sweets)
+                            if (sweetRect.Intersects(new Rectangle(otherSweet.position, otherSweet.type.getDimensions())))
+                                intersects = true;
 
-            //}
+                        if (!intersects)
+                        {
+                            sweets.Add(new Sweet(sweet, new Point(x, y)));
+                            return true;
+                        }
+                        y++;
+                    }
+                    x--;
+                }
+            }
+            else
+            {
+                int x = 0;
+                while (x < dimensions.X)
+                {
+                    Rectangle sweetRect = new Rectangle(x, 0, sweet.getDimensions().X, sweet.getDimensions().Y);
+                    bool intersects = false;
+                    foreach (var otherSweet in sweets)
+                        if (sweetRect.Intersects(new Rectangle(otherSweet.position, otherSweet.type.getDimensions())))
+                            intersects = true;
+
+                    if (!intersects)
+                    {
+                        sweets.Add(new Sweet(sweet, new Point(x, 0)));
+                        return true;
+                    }
+                    x++;
+                }
+            }
+            return false;
         }
 
         public void draw(Point position)

@@ -54,6 +54,15 @@ namespace ProjectSnowflake.UI
                     }
                 }
             }
+            if (timePressed >= 1)
+            {
+                if (SweetsShelf.sweetGrids[currentIndexPressed].sweets.Count > 0)
+                {
+                    if (PlayerInventory.inventory.addSweet(SweetsShelf.sweetGrids[currentIndexPressed].sweets[0].type))
+                        SweetsShelf.sweetGrids[currentIndexPressed].sweets.RemoveAt(0);
+                }
+                timePressed = -0.5f;
+            }
         }
 
         private static Keys getKey(int index)
