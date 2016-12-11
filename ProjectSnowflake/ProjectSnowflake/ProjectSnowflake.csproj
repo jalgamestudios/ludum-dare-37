@@ -63,6 +63,7 @@
     <Compile Include="Timing\Time.cs" />
     <Compile Include="Timing\TimeSource.cs" />
     <Compile Include="UI\BottomBarManager.cs" />
+    <Compile Include="UI\EatingManager.cs" />
     <Compile Include="UI\HUDWorldManager.cs" />
     <Compile Include="UI\ProgressIndicator.cs" />
     <Compile Include="UI\SweetShelfManager.cs" />

@@ -21,6 +21,7 @@ namespace ProjectSnowflake.UI
             BottomBarManager.init();
             SweetShelfManager.init();
             ProgressIndicator.init();
+            EatingManager.init();
         }
 
         public static void update()
@@ -28,6 +29,7 @@ namespace ProjectSnowflake.UI
             HUDWorldManager.update();
             BottomBarManager.update();
             SweetShelfManager.update();
+            EatingManager.update();
         }
 
         public static void draw()
@@ -35,6 +37,7 @@ namespace ProjectSnowflake.UI
             HUDWorldManager.draw();
             BottomBarManager.draw();
             SweetShelfManager.draw();
+            EatingManager.draw();
         }
 
         #endregion

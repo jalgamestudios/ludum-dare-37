@@ -35,7 +35,8 @@ namespace ProjectSnowflake.Entities.Components
         
         public void update(Entity entity)
         {
-            if (SweetShelfManager.visible)
+            if (SweetShelfManager.visible
+                || EatingManager.eatingTimePassed > 0)
             {
                 entity.direction = new Vector2();
                 return;
