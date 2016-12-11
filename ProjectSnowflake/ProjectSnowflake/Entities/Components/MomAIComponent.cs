@@ -1,4 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ProjectSnowflake.Camera;
+using ProjectSnowflake.Rendering;
 using ProjectSnowflake.Timing;
 using ProjectSnowflake.World.Pathfinding;
 using System;
@@ -17,6 +20,8 @@ namespace ProjectSnowflake.Entities.Components
 
         private float speed = 0.5f;
 
+        private Texture2D viewIndicator { get; set; }
+
         #endregion
 
 
@@ -25,6 +30,7 @@ namespace ProjectSnowflake.Entities.Components
         public MomAIComponent()
         {
             path = new List<Vector2>();
+            viewIndicator = RenderingManager.contentManager.Load<Texture2D>("ui/view-indicator");
         }
 
         #endregion
@@ -60,6 +66,19 @@ namespace ProjectSnowflake.Entities.Components
 
         public void draw(Entity entity)
         {
+            float rotation = 0;
+
+            WalkingTextureComponent walker = (WalkingTextureComponent)entity.components.First(comp => comp.GetType() == typeof(WalkingTextureComponent));
+            rotation = walker.rotation;
+
+            RenderingManager.spriteBatch.Draw(viewIndicator,
+                CameraManager.getScreenPosition(entity.center, new Vector2(4, 2)),
+                null,
+                Color.White,
+                rotation,
+                new Vector2(32, 32),
+                SpriteEffects.None,
+                0);
         }
 
         #endregion

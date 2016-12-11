@@ -15,6 +15,7 @@ namespace ProjectSnowflake.World
         public Texture2D texture { get; set; }
         public Rectangle? sourceRectangle { get; set; }
         public bool walkable { get; set; }
+        public bool throughLookable { get; set; }
         public bool draw { get; set; }
 
         public List<TileEvent> events { get; set; }

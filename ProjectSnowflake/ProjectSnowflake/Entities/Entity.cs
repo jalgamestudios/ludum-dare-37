@@ -61,8 +61,8 @@ namespace ProjectSnowflake.Entities
         public void tryMove(Vector2 offset)
         {
             position += offset;
-            //if (WorldManager.collides(position, colliderSize))
-            //    position -= offset;
+            if (WorldManager.collides(position, colliderSize))
+                position -= offset;
         }
 
         #endregion
