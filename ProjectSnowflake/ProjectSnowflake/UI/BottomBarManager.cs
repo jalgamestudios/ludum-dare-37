@@ -19,6 +19,8 @@ namespace ProjectSnowflake.UI
 
         static Texture2D energyActive { get; set; }
 
+        static int minXValue { get { return 40; } }
+
         #endregion
 
 
@@ -38,19 +40,19 @@ namespace ProjectSnowflake.UI
         public static void draw()
         {
             RenderingManager.spriteBatch.Draw(underlay,
-                new Rectangle(0, RenderingManager.screenDimensions.Y - 32, 240, 32),
+                new Rectangle(minXValue, RenderingManager.screenDimensions.Y - 32, 240, 32),
                 Color.White);
 
             float energyValue = (float)Math.Sin(Time.totalGameSeconds) * 0.5f + 0.5f;
             int energyPixelValue = (int)(energyValue * 90);
 
             RenderingManager.spriteBatch.Draw(energyActive,
-                new Rectangle(0, RenderingManager.screenDimensions.Y - 16, energyPixelValue, 16),
+                new Rectangle(minXValue, RenderingManager.screenDimensions.Y - 16, energyPixelValue, 16),
                 new Rectangle(0, 0, energyPixelValue, 16),
                 Color.White);
 
             RenderingManager.spriteBatch.Draw(overlay, 
-                new Rectangle(0, RenderingManager.screenDimensions.Y - 32, 240, 32),
+                new Rectangle(minXValue, RenderingManager.screenDimensions.Y - 32, 240, 32),
                 Color.White);
         }
 

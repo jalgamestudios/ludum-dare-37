@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using ProjectSnowflake.Input;
+using ProjectSnowflake.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,11 @@ namespace ProjectSnowflake.Entities.Components
         
         public void update(Entity entity)
         {
+            if (SweetShelfManager.visible)
+            {
+                entity.direction = new Vector2();
+                return;
+            }
             Vector2 direction = new Vector2();
             if (InputManager.thisFrame.keyboardState.IsKeyDown(Keys.A))
                 direction.X = -1;

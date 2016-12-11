@@ -53,11 +53,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\RenderingManager.cs" />
+    <Compile Include="Sweets\Sweet.cs" />
+    <Compile Include="Sweets\SweetGrid.cs" />
+    <Compile Include="Sweets\SweetsShelf.cs" />
+    <Compile Include="Sweets\SweetType.cs" />
+    <Compile Include="Sweets\SweetTypeHelper.cs" />
     <Compile Include="Timing\FpsTracker.cs" />
     <Compile Include="Timing\Time.cs" />
     <Compile Include="Timing\TimeSource.cs" />
     <Compile Include="UI\BottomBarManager.cs" />
     <Compile Include="UI\HUDWorldManager.cs" />
+    <Compile Include="UI\ProgressIndicator.cs" />
+    <Compile Include="UI\SweetShelfManager.cs" />
     <Compile Include="UI\UIManager.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\TileDefinition.cs" />
@@ -85,10 +92,10 @@
     <Content Include="content\characters\jimmy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="content\tiles\definitions.xml">
+    <Content Include="content\sweets\spritesheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="content\tiles\floor\wooden-boards.png">
+    <Content Include="content\tiles\definitions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="content\tiles\spritesheet.png">
@@ -101,6 +108,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="content\ui\energy-bar-active.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\ui\progress-indicator.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="content\ui\sweets-shelf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="content\ui\take-sweets-floater.png">

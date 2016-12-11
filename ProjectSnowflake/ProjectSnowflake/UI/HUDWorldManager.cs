@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using ProjectSnowflake.Camera;
 using ProjectSnowflake.Entities;
+using ProjectSnowflake.Input;
 using ProjectSnowflake.Rendering;
 using ProjectSnowflake.Timing;
 using System;
@@ -35,6 +37,14 @@ namespace ProjectSnowflake.UI
 
         public static void update()
         {
+            if (takeSweetsEnabled)
+            {
+                if (InputManager.lastFrame.keyboardState.IsKeyUp(Keys.Q) &&
+                    InputManager.thisFrame.keyboardState.IsKeyDown(Keys.Q))
+                {
+                    SweetShelfManager.visible = !SweetShelfManager.visible;
+                }
+            }
         }
 
         public static void draw()

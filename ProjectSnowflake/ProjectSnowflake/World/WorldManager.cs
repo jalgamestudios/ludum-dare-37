@@ -27,7 +27,7 @@ namespace ProjectSnowflake.World
 
         public static void init()
         {
-            loadTileDefinitions(); tileDefinitions.Add(new TileDefinition(RenderingManager.contentManager.Load<Texture2D>("tiles/floor/wooden-boards"), true));
+            loadTileDefinitions();
 
             layers = new List<TileLayer>();
 
